@@ -1,4 +1,4 @@
-import {View, SafeAreaView, StyleSheet} from 'react-native';
+import {View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 export default function Flex() {
