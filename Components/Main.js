@@ -1,4 +1,11 @@
-import {Text, TouchableOpacity, View, StyleSheet, Button} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+  Button,
+  SafeAreaView,
+} from 'react-native';
 import React, {Component, useState} from 'react';
 
 export default function Main() {
@@ -9,23 +16,41 @@ export default function Main() {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={increaseNumber}>
-        <Text style={styles.text}>{num}</Text>
-      </TouchableOpacity>
-      <Button
-        title="Click"
-        onPress={(event)=> console.log(event)}
-        disabled={false}></Button>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.first_container}>
+        <TouchableOpacity onPress={increaseNumber}>
+          <Text style={styles.text}>{num}</Text>
+        </TouchableOpacity>
+        <Button
+          title="Click"
+          onPress={event => console.log(event)}
+          disabled={false}
+        />
+      </View>
+
+      <View style={styles.second_container}>
+        <Text>Stage 2</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    flex: 1,
+    flexDirection:  'column',
+  },
+  first_container: {
+    flex: 5,
     alignItems: 'center',
     justifyContent: 'space-around',
+    backgroundColor: 'indigo',
+  },
+  second_container: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: 'lightgray',
   },
   text: {
     color: 'lightgray',
