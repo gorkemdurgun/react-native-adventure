@@ -1,7 +1,22 @@
-import {View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  Button,
+} from 'react-native';
 import React from 'react';
 
-export default function Flex() {
+export default function Flex({navigation}) {
+
+  function navigateToPage(page) {
+    navigation.navigate(page);
+  }
+
+  function goBack() {
+    navigation.goBack();
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainTopContainer}>
@@ -10,7 +25,15 @@ export default function Flex() {
         <View style={styles.con3}></View>
         <View style={styles.con4}></View>
       </View>
-      <View style={styles.mainBottomContainer}></View>
+      <View style={styles.mainBottomContainer}>
+        <Button
+          title="Go To Main"
+          onPress={() => navigateToPage('Main')}
+          disabled={false}
+        />
+
+        <Button title="Go Back" onPress={goBack} disabled={false} />
+      </View>
     </SafeAreaView>
   );
 }
@@ -31,6 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: 'indigo',
+    justifyContent: 'space-evenly',
   },
   con1: {
     width: 70,

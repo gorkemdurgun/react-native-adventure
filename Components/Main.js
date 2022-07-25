@@ -8,12 +8,18 @@ import {
 } from 'react-native';
 import React, {Component, useState} from 'react';
 
-export default function Main() {
+export default function Main(props) {
   const [num, setNum] = useState(24);
 
-  const increaseNumber = () => {
+  console.log(props);
+
+  function increaseNumber() {
     setNum(num + 1);
-  };
+  }
+
+  function navigateToPage(page) {
+    props.navigation.navigate(page);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -22,7 +28,7 @@ export default function Main() {
           <Text style={styles.text}>{num}</Text>
         </TouchableOpacity>
         <Button
-          title="Click"
+          title="Event Log Button"
           onPress={event => console.log(event)}
           disabled={false}
         />
@@ -30,6 +36,11 @@ export default function Main() {
 
       <View style={styles.second_container}>
         <Text>Stage 2</Text>
+        <Button
+          title="Go To Flex"
+          onPress={() => navigateToPage('Flex')}
+          disabled={false}
+        />
       </View>
     </SafeAreaView>
   );
@@ -38,7 +49,7 @@ export default function Main() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection:  'column',
+    flexDirection: 'column',
   },
   first_container: {
     flex: 5,
