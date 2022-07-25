@@ -13,12 +13,22 @@ export default function Main(props) {
 
   console.log(props);
 
+  let myUser = {
+    name: 'Görkem',
+    email: 'gorkem@gmail.com',
+    phone: '123-456-1234',
+  };
+
   function increaseNumber() {
     setNum(num + 1);
   }
 
-  function navigateToPage(page) {
-    props.navigation.navigate(page);
+  function pushToPage(page) {
+    props.navigation.push(page);
+  }
+
+  function navigateWithParams(page, user) {
+    props.navigation.navigate(page, {user: user});
   }
 
   return (
@@ -36,9 +46,16 @@ export default function Main(props) {
 
       <View style={styles.second_container}>
         <Text>Stage 2</Text>
+
         <Button
-          title="Go To Flex"
-          onPress={() => navigateToPage('Flex')}
+          title="Push To CustomComponent"
+          onPress={() => pushToPage('CustomComponent')}
+          disabled={false}
+        />
+       
+        <Button
+          title="Go Flex With Param"
+          onPress={() => navigateWithParams('Flex', myUser)}
           disabled={false}
         />
       </View>
@@ -52,7 +69,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   first_container: {
-    flex: 5,
+    flex: 3,
     alignItems: 'center',
     justifyContent: 'space-around',
     backgroundColor: 'indigo',

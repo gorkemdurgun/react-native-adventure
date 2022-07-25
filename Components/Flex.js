@@ -4,10 +4,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  Text,
 } from 'react-native';
 import React from 'react';
 
-export default function Flex({navigation}) {
+export default function Flex(props) {
+  let userParams = props.route.params.user;
+  let navigation = props.navigation;
 
   function navigateToPage(page) {
     navigation.navigate(page);
@@ -20,10 +23,10 @@ export default function Flex({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainTopContainer}>
+        <Text style={styles.textStyle}>{userParams.name + '\n' + userParams.email}</Text>
         <View style={styles.con1}></View>
         <View style={styles.con2}></View>
         <View style={styles.con3}></View>
-        <View style={styles.con4}></View>
       </View>
       <View style={styles.mainBottomContainer}>
         <Button
@@ -31,7 +34,6 @@ export default function Flex({navigation}) {
           onPress={() => navigateToPage('Main')}
           disabled={false}
         />
-
         <Button title="Go Back" onPress={goBack} disabled={false} />
       </View>
     </SafeAreaView>
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
   mainBottomContainer: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'indigo',
+    backgroundColor: 'deeporange',
     justifyContent: 'space-evenly',
   },
   con1: {
@@ -76,4 +78,10 @@ const styles = StyleSheet.create({
     height: 70,
     backgroundColor: 'blue',
   },
+  textStyle:{
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
+  }
 });

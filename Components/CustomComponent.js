@@ -4,10 +4,31 @@ import {
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
+  Button,
 } from 'react-native';
 import React from 'react';
 
-export default function CustomComponent() {
+export default function CustomComponent(props) {
+  function pushToPage(page) {
+    props.navigation.push(page);
+  }
+
+  function navigateToPage(page) {
+    props.navigation.navigate(page);
+  }
+
+  function popToPop() {
+    props.navigation.popToTop();
+  }
+
+  function pop() {
+    props.navigation.pop();
+  }
+
+  function replace() {
+    props.navigation.replace();
+  }
+
   return (
     <SafeAreaView style={{backgroundColor: 'whitesmoke'}}>
       <View style={styles.card}>
@@ -19,6 +40,19 @@ export default function CustomComponent() {
           <Text>CLICK</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.container}>
+          <Button
+            title="Push To CustomComponent"
+            onPress={() => pushToPage('CustomComponent')}
+          />
+          <Button title="popToPop" onPress={popToPop} />
+          <Button title="pop" onPress={pop} />
+          <Button title="replace" onPress={replace} />
+          <Button
+            title="Navigate To CustomComponent"
+            onPress={() => navigateToPage('CustomComponent')}
+          />
+        </View>
     </SafeAreaView>
   );
 }
@@ -29,6 +63,12 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 10,
     elevation: 15,
+  },
+  container: {
+    height: '50%',
+    justifyContent: 'space-evenly',
+    padding: 10,
+    marginTop: 10,
   },
   body: {
     padding: 10,
@@ -51,5 +91,9 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     alignItems: 'center',
+  },
+  navigate_button: {
+    margin: 10,
+    padding: 10,
   },
 });
