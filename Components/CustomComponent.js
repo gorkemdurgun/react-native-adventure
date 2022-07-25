@@ -41,18 +41,23 @@ export default function CustomComponent(props) {
         </TouchableOpacity>
       </View>
       <View style={styles.container}>
-          <Button
-            title="Push To CustomComponent"
-            onPress={() => pushToPage('CustomComponent')}
-          />
-          <Button title="popToPop" onPress={popToPop} />
-          <Button title="pop" onPress={pop} />
-          <Button title="replace" onPress={replace} />
-          <Button
-            title="Navigate To CustomComponent"
-            onPress={() => navigateToPage('CustomComponent')}
-          />
-        </View>
+        <Button
+          title="Push To CustomComponent"
+          onPress={() => pushToPage('CustomComponent')}
+        />
+        <Button title="popToPop" onPress={popToPop} />
+        <Button title="pop" onPress={pop} />
+        <Button title="replace" onPress={replace} />
+        <Button
+          title="Navigate To CustomComponent"
+          onPress={() => navigateToPage('CustomComponent')}
+        />
+        <Button
+          title="Navigate To Main"
+          onPress={() => navigateToPage('Main')}
+        />
+        <Button title="Push To Main" onPress={() => pushToPage('Main')} />
+      </View>
     </SafeAreaView>
   );
 }

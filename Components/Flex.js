@@ -23,18 +23,20 @@ export default function Flex(props) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainTopContainer}>
-        <Text style={styles.textStyle}>{userParams.name + '\n' + userParams.email}</Text>
+        <Text style={styles.textStyle}>
+          {userParams.name + '\n' + userParams.email}
+        </Text>
         <View style={styles.con1}></View>
         <View style={styles.con2}></View>
         <View style={styles.con3}></View>
       </View>
       <View style={styles.mainBottomContainer}>
+        <Button title="Go To Main" onPress={() => navigateToPage('Main')} />
         <Button
-          title="Go To Main"
-          onPress={() => navigateToPage('Main')}
-          disabled={false}
+          title="Go CustomComponent"
+          onPress={() => navigateToPage('CustomComponent')}
         />
-        <Button title="Go Back" onPress={goBack} disabled={false} />
+        <Button title="Go Back" onPress={goBack} />
       </View>
     </SafeAreaView>
   );
@@ -78,10 +80,10 @@ const styles = StyleSheet.create({
     height: 70,
     backgroundColor: 'blue',
   },
-  textStyle:{
+  textStyle: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20,
     textAlign: 'center',
-  }
+  },
 });

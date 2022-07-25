@@ -52,7 +52,7 @@ export default function Main(props) {
           onPress={() => pushToPage('CustomComponent')}
           disabled={false}
         />
-       
+
         <Button
           title="Go Flex With Param"
           onPress={() => navigateWithParams('Flex', myUser)}
